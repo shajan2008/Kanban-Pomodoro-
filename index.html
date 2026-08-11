@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <hgroup>
+        <h2>Productivity Dashboard</h2>
+        <p>Enhance your productivity</p>
+    </hgroup>
+    <section class="pomodoro">
+        <div id="timer-display">
+            <time>25:00</time>
+            <button id="start-btn" class="btn">Start</button>
+            <button id="pause-btn" class="btn">Pause</button>
+            <button id="reset-btn" class="btn">Reset</button>
+            <button id="mode-bar-one" class="btn">Work (25min)</button>
+            <button id="mode-bar-two" class="btn">Break (5min)</button>
+            <button id="mode-bar-three" class="btn"g>Long Break (15min)</button>
+        </div>
+    </section>
+    <section class="kanban">
+        <form id="kanban-form">
+            <input type="text" id="task-input">
+            <button id="add-task">Add Task</button>
+        </form>
+        <div class="column" id="to-do">
+            <h3>TO DO</h3>
+            <ul id="todo-col"></ul>
+        </div>
+        <div class="column" id="in-progress">
+            <h3>IN PROGRESS</h3>
+            <ul id="in-progress-col"></ul>
+        </div>
+        <div class="column" id="done">
+            <h3>DONE</h3>
+            <ul id="done-col"></ul>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
