@@ -31,19 +31,45 @@ time{
     border: 1px #38bdf8 solid ;
     background-color: #1e293b;
     color: #38bdf8;
+    transition: box-shadow 0.2s ease-in-out;
 }
 .btn:hover{
     cursor: pointer;
     background-color: #38bdf8;
     color: #1e293b;
-    transition: 0.25s ease-in-out;
+    box-shadow: 0 0 15px 5px rgba(0, 123, 255, 0.6);
 }
 #kanban-form{
     display: flex;
-    align-items: start;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+#task-input{
+    display: flex;
+    flex: 1;
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    color: #f8fafc;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 1rem;
+    outline: none;
+}
+#task-input:focus{
+    border-color: #38bdf8;
 }
 #add-task{
-    padding: 16 20px;
+    background-color: #38bdf8;
+    color: #0f172a;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+#add-task:hover{
+    background-color: #0284c7;
 }
 .kanban{
     display: grid;
