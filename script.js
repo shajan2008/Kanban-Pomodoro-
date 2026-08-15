@@ -33,5 +33,23 @@ const startTimer = () =>{
     }, 1000) 
 };
 const pauseTimer = () =>{
-    
+    clearInterval(timerId);
+    timerId = null;
 };
+const resetTimer = () => {
+    pauseTimer();
+    timeLeft = 1500;
+    updateDisplay();
+};
+const switchMode = (seconds) => {
+    pauseTimer();
+    timeLeft = seconds;
+    updateDisplay();
+};
+timeControlOne.addEventListener(`click`, startTimer);
+timeControlTwo.addEventListener(`click`, pauseTimer);
+timeControlThree.addEventListener(`click`, resetTimer);
+modeBarOne.addEventListener(`click`, () => switchMode(1500))
+modeBarTwo.addEventListener(`click`, () => switchMode(300));
+modeBarThree.addEventListener(`click`, () => switchMode(900));
+updateDisplay();
