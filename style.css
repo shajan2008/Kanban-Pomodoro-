@@ -86,3 +86,25 @@ ul{
     list-style: none;
     padding: 0;
 }
+.card-btn{
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    background-color: #1e293b;
+    border: 1px solid #38bdf8;
+    color: #38bdf8;
+}
+.card-btn:hover{
+    background-color: #38bdf8;
+    color: #1e293b;
+}
+.card{
+    list-style: none;
+    padding: 12px;
+    background-color: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}

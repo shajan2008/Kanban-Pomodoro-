@@ -53,3 +53,77 @@ modeBarOne.addEventListener(`click`, () => switchMode(1500))
 modeBarTwo.addEventListener(`click`, () => switchMode(300));
 modeBarThree.addEventListener(`click`, () => switchMode(900));
 updateDisplay();
+
+kanbanForm.addEventListener(`submit`, (e) => {
+    e.preventDefault();
+    if(Task.value.trim() === ``){
+        return;
+    }
+    const taskObject = {
+        id : crypto.randomUUID(),
+        title : Task.value.trim(),
+        status : `todo`
+    };
+    tasks.push(taskObject);
+    localStorage.setItem(`kanbanTasks`, JSON.stringify(tasks));
+    Task.value = ``;
+    renderTask();
+})
+
+const renderTask = () =>{
+    columnOne.innerHTML = ``;
+    columnTwo.innerHTML = ``;
+    columnThree.innerHTML = ``;
+    tasks.forEach(task =>{
+        if(task.status === `todo`){
+            let cardHTML = `
+            <ul class="card">
+                <li>${task.title}</li>
+                <li>
+                    <button onclick="moveTask('${task.id}', 'in-progress')" class="card-btn">Move Task</button>
+                </li>
+                <li>
+                    <button onclick="deleteTask('${task.id}')" class="card-btn">Delete Task</button>
+                </li>
+            </ul>`;
+            columnOne.innerHTML += cardHTML;
+        }
+        else if(task.status === `in-progress`){
+            cardHTML = `
+            <ul class="card">
+                <li>${task.title}</li>
+                <li>
+                    <button onclick="moveTask('${task.id}', 'done')" class="card-btn">Move Task</button>
+                </li>
+                <li>
+                    <button onclick="deleteTask('${task.id}')" class="card-btn">Delete Task</button>
+                </li>
+            </ul>`;
+            columnTwo.innerHTML += cardHTML;   
+        }
+        else if(task.status === `done`){
+            cardHTML = `
+            <ul class="card">
+                <li>${task.title}</li>
+                <li>
+                    <button onclick="deleteTask('${task.id}')" class="card-btn">Delete Task</button>
+                </li>
+            </ul>`;
+            columnThree.innerHTML += cardHTML;
+        }
+    })
+};
+const moveTask = (taskId, newStatus) => {
+    const targetTask = tasks.find(item => item.id === taskId);
+    if(targetTask){
+        targetTask.status = newStatus;
+        localStorage.setItem(`kanbanTasks`,JSON.stringify(tasks));
+        renderTask();
+    }
+};
+const deleteTask = (taskId) =>{
+    tasks = tasks.filter(dTask => dTask.id !== taskId);
+    localStorage.setItem(`kanbanTasks`,JSON.stringify(tasks));
+    renderTask();
+};
+renderTask();
